@@ -13,18 +13,18 @@ namespace BaseConverter
         {
             while (true)
             {
-                int number = Int32.Parse(Console.ReadLine());
-                if (number == 0)
+                int userInputNumber = Int32.Parse(Console.ReadLine());
+                if (userInputNumber == 0) //exit the while true loop with a break if user inputs 0
                 {
                     break;
                 }
-                else if (number < 0)
+                else if (userInputNumber < 0)
                 {
-                    Console.WriteLine("Invalid Input, Try Again");
+                    Console.WriteLine("Invalid Input, Try Again"); //defensive programming
                 }
-                else
+                else //if valid input, convert to base 8 and output to user
                 {
-                    string convertFinal = Convert.ToString(number, 8);
+                    string convertFinal = Convert.ToString(userInputNumber, 8);
                     Console.WriteLine("The base 8 version is " + convertFinal);
                 }
             }
