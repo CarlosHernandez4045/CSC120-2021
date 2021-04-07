@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoopConfigTesting", "LoopConfigTesting.csproj", "{52B571FF-8B34-4F21-88E7-4BE9BB12E33B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W2DigitalGates", "W2DigitalGates.csproj", "{36F38AD6-DA38-4AB1-B38F-5011C8F9D779}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{52B571FF-8B34-4F21-88E7-4BE9BB12E33B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{52B571FF-8B34-4F21-88E7-4BE9BB12E33B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{52B571FF-8B34-4F21-88E7-4BE9BB12E33B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{52B571FF-8B34-4F21-88E7-4BE9BB12E33B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36F38AD6-DA38-4AB1-B38F-5011C8F9D779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36F38AD6-DA38-4AB1-B38F-5011C8F9D779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36F38AD6-DA38-4AB1-B38F-5011C8F9D779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36F38AD6-DA38-4AB1-B38F-5011C8F9D779}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CC2DD219-966F-4692-BA7A-D4CAD257C1C9}
+		SolutionGuid = {AD1D3983-883C-45B4-815F-D288B3FED262}
 	EndGlobalSection
 EndGlobal
