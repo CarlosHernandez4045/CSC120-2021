@@ -15,21 +15,13 @@ namespace W2DigitalGates
             Console.WriteLine("X | Y | Z");
             foreach (var row in truthTable)
             {
-                var result = OrGate.Input(row.X, row.Y);
+                var result = XnorGate.Input(row.X, row.Y);
                 Console.WriteLine("____________");
-                string xas = row.X ? "1" : "0";
-                string yas = row.Y ? "1" : "0";
+                string xAs = row.X ? "1" : "0";
+                string yAs = row.Y ? "1" : "0";
                 var resultAs = result ? "1" : "0";
-                Console.WriteLine($"{xas} | {yas} | {resultAs}");
+                Console.WriteLine($"{xAs} | {yAs} | {resultAs}");
             }
         }
-        //static void Test1()
-        //{
-        //    var x = true;
-        //    var y = false;
-        //    var result = OrGate.Input(x, y);
-        //    Console.WriteLine($"The result of AndGate for inputs of" +
-        //        $" X = {x} and Y = {y} is equal to {result}");
-        //}
     }
 }

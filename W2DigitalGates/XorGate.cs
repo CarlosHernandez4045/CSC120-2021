@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace W2DigitalGates
 {
-    class OrGate
+    class XorGate
     {
         public static bool Input(bool x, bool y)
         {
-            if (x.Equals(true) | y.Equals(true))
+            if (x ^ y)
             {
                 return true;
             }

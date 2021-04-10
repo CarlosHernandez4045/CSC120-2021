@@ -8,16 +8,13 @@ namespace W2DigitalGates
 {
     class NotGate
     {
-        public static bool Input(bool x, bool y)
+        public static bool Input(bool result)
         {
-            if (x.Equals(true) || y.Equals(true))
+            if (result == true)
             {
                 return false;
             }
-            else
-            {
-                return true;
-            }
+            return true;
         }
     }
 }
