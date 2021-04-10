@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace W2DigitalGates
 {
     class Program
-    {
+    { //Line 18 and 19 to test different logic gates!
         static void Main(string[] args)
         {
             var truthTable = new List<GateInputs>();
@@ -15,7 +15,8 @@ namespace W2DigitalGates
             Console.WriteLine("X | Y | Z");
             foreach (var row in truthTable)
             {
-                var result = XnorGate.Input(row.X, row.Y);
+                var result = NandGate.Input(row.X, row.Y); //Use this to test different class gate methods
+                result = NotGate.Input(result); //Use this to NOT gate, comment out if needed
                 Console.WriteLine("____________");
                 string xAs = row.X ? "1" : "0";
                 string yAs = row.Y ? "1" : "0";
