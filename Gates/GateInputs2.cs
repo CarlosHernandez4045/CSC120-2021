@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Gates
 {
-    public class AndGate
+    class GateInputs2
     {
-        public static bool Input(bool x, bool y)
-        {
-            return x && y;
-        }
+        public bool A { get; set; }
+        
+        public bool B { get; set; }
+
+        public bool C { get; set; }
     }
 }

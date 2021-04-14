@@ -6,18 +6,11 @@ using System.Threading.Tasks;
 
 namespace Gates
 {
-    class NotGate
+    public class NotGate
     {
-        public static bool Input(bool x, bool y)
+        public static bool Input(bool x)
         {
-            if(x.Equals(true) || y.Equals(true))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return !x;
         }
     }
 }

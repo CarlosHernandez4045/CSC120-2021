@@ -10,14 +10,7 @@ namespace Gates
     {
         public static bool Input(bool x, bool y)
         {
-            if(x.Equals(true) || y.Equals(true))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (x || y);
         }
     }
 }
