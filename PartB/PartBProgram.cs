@@ -9,7 +9,7 @@ namespace PartB
     class PartBProgram
     {
         public static void Main(string[] args)
-        {
+        { //run this program to verify DeMorgansTheorem
             var inputs = new List<TheoremInputs>();
             inputs.Add(new TheoremInputs { X = false, Y = false });
             inputs.Add(new TheoremInputs { X = false, Y = true });
