@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeMorgansTheorem.cs" />
-    <Compile Include="PartB.cs" />
+    <Compile Include="PartBProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TheoremInputs.cs" />
   </ItemGroup>
