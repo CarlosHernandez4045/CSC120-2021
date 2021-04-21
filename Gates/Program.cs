@@ -7,27 +7,14 @@ namespace Gates
     {
         static void Main(string[] args)
         {
-            var truthTable = new List<GateInputs2>();
-            truthTable.Add(new GateInputs2 { A = false, B = false, C = false });
-            truthTable.Add(new GateInputs2 { A = false, B = false, C = true });
-            truthTable.Add(new GateInputs2 { A = false, B = true, C = false });
-            truthTable.Add(new GateInputs2 { A = false, B = true, C = true });
-            truthTable.Add(new GateInputs2 { A = true, B = false, C = false });
-            truthTable.Add(new GateInputs2 { A = true, B = true, C = false });
-            truthTable.Add(new GateInputs2 { A = true, B = true, C = true });
-            truthTable.Add(new GateInputs2 { A = true, B = false, C = true });
-            Console.WriteLine("A | B | C | Z");
-            foreach (var row in truthTable)
-            {
-                var bc = OrGate.Input(row.B, row.C);
-                var z = AndGate.Input(bc, row.A);
-                Console.WriteLine("____________");
-                string aas = row.A ? "1" : "0";
-                string bas = row.B ? "1" : "0";
-                string cas = row.C ? "1" : "0";
-                var resultAs = z ? "1" : "0";
-                Console.WriteLine($"{aas} | {bas} | {cas} | {resultAs}");
-            }
+            var a = false;
+            var b = false;
+            var c = false;
+            
+            //Chaining
+            var logicGate = new LogicalGate();
+            var result = logicGate.And(b, c).Or(c).Result;
+            Console.WriteLine(result);
         }
         static void CircuitTest()
         {
@@ -35,11 +22,13 @@ namespace Gates
             var b = false;
             var c = false;
 
-            var bc = OrGate.Input(b, c);
-            var z = AndGate.Input(bc, a);
+            //var bc = OrGate.Input(b, c);
+            //var z = AndGate.Input(bc, a);
 
-            Console.WriteLine($"the result of NotGate for inputs of" +
-                    $" A = {a}, B = {b}, C = {c} is equal to {z}");
+            //Console.WriteLine($"the result of NotGate for inputs of" +
+            //        $" A = {a}, B = {b}, C = {c} is equal to {z}");
+            var myLogicGate = new LogicalGate();
+            var result = myLogicGate.And(b, c);
         }
         static void NotGateTest()
         {
@@ -64,6 +53,30 @@ namespace Gates
                 string yas = row.Y ? "1" : "0";
                 var resultAs = result ? "1" : "0";
                 Console.WriteLine($"{xas} | {yas} | {resultAs}");
+            }
+        static void BcTest()
+            {
+                var truthTable = new List<GateInputs2>();
+                truthTable.Add(new GateInputs2 { A = false, B = false, C = false });
+                truthTable.Add(new GateInputs2 { A = false, B = false, C = true });
+                truthTable.Add(new GateInputs2 { A = false, B = true, C = false });
+                truthTable.Add(new GateInputs2 { A = false, B = true, C = true });
+                truthTable.Add(new GateInputs2 { A = true, B = false, C = false });
+                truthTable.Add(new GateInputs2 { A = true, B = true, C = false });
+                truthTable.Add(new GateInputs2 { A = true, B = true, C = true });
+                truthTable.Add(new GateInputs2 { A = true, B = false, C = true });
+                Console.WriteLine("A | B | C | Z");
+                foreach (var row in truthTable)
+                {
+                    var bc = OrGate.Input(row.B, row.C);
+                    var z = AndGate.Input(bc, row.A);
+                    Console.WriteLine("____________");
+                    string aas = row.A ? "1" : "0";
+                    string bas = row.B ? "1" : "0";
+                    string cas = row.C ? "1" : "0";
+                    var resultAs = z ? "1" : "0";
+                    Console.WriteLine($"{aas} | {bas} | {cas} | {resultAs}");
+                }
             }
         }
     }
