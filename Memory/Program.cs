@@ -30,7 +30,7 @@ namespace Memory
             }
             else
             {
-                Console.WriteLine("The inputted file path does not exist. Please try again.");
+                Console.WriteLine("The inputted file path does not exist. Please try again."); //output user error
             }
 
         }
