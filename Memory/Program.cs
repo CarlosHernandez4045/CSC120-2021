@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Memory
@@ -20,9 +21,9 @@ namespace Memory
 
                 foreach (var input in truthTableInputs)
                 {
+                    Thread.Sleep(1000);
                     Console.WriteLine($"{Utility.ConvertToBinary(input.A)}, {Utility.ConvertToBinary(input.X)}, {Utility.ConvertToBinary(input.D)}, {Utility.ConvertToBinary(input.L)}");
                     Storage.SaveTruthTableData(input);
-                    Console.ReadKey(true); //making user press key to continue between inputs to test crashing / slow output
                 }
                 Storage.WipeMemoryFile();
                 Console.WriteLine("Memory file wiped after successful run. Press any key to exit.");

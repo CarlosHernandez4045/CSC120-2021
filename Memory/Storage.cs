@@ -9,7 +9,7 @@ namespace Memory
 {
     public class Storage
     {
-        static string STORAGE = @"D:\Documents\storage.txt";
+        static string STORAGE = "MyStore.txt";
 
         public static void WipeMemoryFile()
         {
@@ -19,7 +19,7 @@ namespace Memory
 
         public static bool SaveTruthTableData(int val1, int val2, int val3, int result)
         {
-            var fs = new FileStream(STORAGE, FileMode.Create);
+            var fs = new FileStream(STORAGE, FileMode.Open);
             var sw = new StreamWriter(fs);
             sw.WriteLine($"{val1},{val2},{val3},{result}");
             sw.Flush();
@@ -59,7 +59,8 @@ namespace Memory
             var inputList = new List<TruthTable>();
             var fs = new FileStream(dataPath, FileMode.Open);
             var sr = new StreamReader(fs);
-            Console.WriteLine(sr.ReadLine()); //header with variables
+            var header = sr.ReadLine();
+            Console.WriteLine(header); // print header with variables
             string data;
             while ((data = sr.ReadLine()) != null) //read till End of File
             {
@@ -87,7 +88,8 @@ namespace Memory
             var sr = new StreamReader(fs);
             var memsr = new StreamReader(mem);
             Console.WriteLine("Reading from last in memory, also printing variables.");
-            Console.WriteLine(sr.ReadLine()); //header with variables
+            var header = sr.ReadLine();
+            Console.WriteLine(header); //header with variables
             var memory = memsr.ReadLine();
             string data;
 
