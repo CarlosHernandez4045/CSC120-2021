@@ -29,14 +29,13 @@ namespace Memory
                     if (gate.DoesntHave3Vars())
                     {
                         TwoVarEval(gate.InputA, gate.InputD, input.L, result);
-                        Storage.SaveTruthTableData(input);
+                        Storage.SaveTruthTableData(3, input);
                     }
                     else
                     {
                         ThreeVarEval(gate.InputA, gate.InputD, gate.InputX, input.L, result);
-                        Storage.SaveTruthTableData(input);
+                        Storage.SaveTruthTableData(4, input);
                     }
-                    Storage.SaveTruthTableData(input);
                     Console.ReadKey(true);
                 }
                 Storage.WipeMemoryFile();
