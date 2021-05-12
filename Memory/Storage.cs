@@ -116,6 +116,7 @@ namespace Memory
                 {
                     Console.WriteLine("This program isn't suited for the amount of elements in the given data. " +
                         "\n Please try again with a 2:1 or 3:1 multiplexer. Exiting now.");
+                    Environment.Exit(-1073741510);
                 }
 
                 SaveTruthTableData(dataElements.Length, inputRow);
@@ -175,6 +176,8 @@ namespace Memory
                     {
                         Console.WriteLine("This program isn't suited for the amount of elements in the given data. " +
                             "\n Please try again with a 2:1 or 3:1 multiplexer. Exiting now.");
+                        Environment.Exit(-1073741510);
+
                     }
 
                     SaveTruthTableData(dataElements.Length, inputRow);
