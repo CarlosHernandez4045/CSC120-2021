@@ -8,6 +8,7 @@ namespace Memory
 {
     public class TruthTable
     {
+    //didnt change truth table to A,B,R to challenge myself and work with 3 vars in logical gates
         public Boolean A { get; set; }
         public Boolean X { get; set; }
         public Boolean D { get; set; }

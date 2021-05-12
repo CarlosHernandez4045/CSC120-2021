@@ -33,8 +33,8 @@ namespace Memory
 
             return SaveTruthTableData(
                                         tt.A ? 1 : 0,
-                                        tt.X ? 1 : 0,
                                         tt.D ? 1 : 0,
+                                        tt.X ? 1 : 0,
                                         tt.L ? 1 : 0
                                         );
         }
@@ -60,7 +60,7 @@ namespace Memory
             var fs = new FileStream(dataPath, FileMode.Open);
             var sr = new StreamReader(fs);
             var header = sr.ReadLine();
-            Console.WriteLine(header); // print header with variables
+            Console.WriteLine("Header: " + header + "\n"); // print header with variables
             string data;
             while ((data = sr.ReadLine()) != null) //read till End of File
             {
@@ -68,8 +68,8 @@ namespace Memory
 
                 var dataElements = data.Split(','); // 0,1,0,1  will be split into arrays
                 inputRow.A = Utility.ConvertToBoolean(dataElements[0]);
-                inputRow.X = Utility.ConvertToBoolean(dataElements[1]);
-                inputRow.D = Utility.ConvertToBoolean(dataElements[2]);
+                inputRow.D = Utility.ConvertToBoolean(dataElements[1]);
+                inputRow.X = Utility.ConvertToBoolean(dataElements[2]);
                 inputRow.L = Utility.ConvertToBoolean(dataElements[3]);
                 SaveTruthTableData(inputRow);
                 inputList.Add(inputRow);
@@ -87,10 +87,13 @@ namespace Memory
             var mem = new FileStream(STORAGE, FileMode.Open);
             var sr = new StreamReader(fs);
             var memsr = new StreamReader(mem);
-            Console.WriteLine("Reading from last in memory, also printing variables.");
             var header = sr.ReadLine();
-            Console.WriteLine(header); //header with variables
             var memory = memsr.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Detected crash. Reading from last value in memory: {memory}."+
+                "\nAlso reprinting the variables for you.");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Header: " + header + "\n"); //header with variables
             string data;
 
             mem.Close();
@@ -109,8 +112,8 @@ namespace Memory
 
                     var dataElements = data.Split(','); // 0,1,0,1  will be split into arrays
                     inputRow.A = Utility.ConvertToBoolean(dataElements[0]);
-                    inputRow.X = Utility.ConvertToBoolean(dataElements[1]);
-                    inputRow.D = Utility.ConvertToBoolean(dataElements[2]);
+                    inputRow.D = Utility.ConvertToBoolean(dataElements[1]);
+                    inputRow.X = Utility.ConvertToBoolean(dataElements[2]);
                     inputRow.L = Utility.ConvertToBoolean(dataElements[3]);
                     SaveTruthTableData(inputRow);
                     inputList.Add(inputRow);
