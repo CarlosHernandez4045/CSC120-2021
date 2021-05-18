@@ -1,52 +1,49 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace SimpleCircuits
 {
     class Program
     {
+        static int numberOfInputs = 6;
         static void Main(string[] args)
         {
-            Input.Generate(10); //will generate whatever amount of binary inputs. in this case 10
+            //create and initialize graph
+            Graph.Initialize();
+            //generate all possible inputs
+            Input.Generate(numberOfInputs);
+            //displays list of gates based on possible inputs
+            var listOfGates = Input.ConvertToLogicList(numberOfInputs);
 
-            var logicList = Input.ConvertToLogicList();
 
-            foreach(var item in logicList)
+
+            //loop over gates and keep adding/evaluating them
+            foreach (var gate in listOfGates)
             {
-                var gateEval = new LogicGate()
+                var outputBinary = new List<string>();
+                foreach (var input in gate.NumberOfInputs)
                 {
-                    Input1 = item.Input1,
-                    Input2 = item.Input2,
-                    Input3 = item.Input3,
-                    Input4 = item.Input4,
-                    Input5 = item.Input5,
-                    Input6 = item.Input6,
-                    Input7 = item.Input7,
-                    Input8 = item.Input8,
-                    Input9 = item.Input9,
-                    Input10 = item.Input10,
+                    outputBinary.Add(Function.ConvertToBinary(input).ToString());
+                    var result = gate.ProcessAsAndGate();
 
-                };
-                bool result = gateEval.TenVar();
-                string inputs = $"{Function.ConvertToBinary(item.Input1)}{Function.ConvertToBinary(item.Input2)}{Function.ConvertToBinary(item.Input3)}{Function.ConvertToBinary(item.Input4)}" +
-                    $"{Function.ConvertToBinary(item.Input5)}{Function.ConvertToBinary(item.Input6)}{Function.ConvertToBinary(item.Input7)}" +
-                    $"{Function.ConvertToBinary(item.Input8)}{Function.ConvertToBinary(item.Input9)}{Function.ConvertToBinary(item.Input10)}";
-                Console.WriteLine($"Inputs: {inputs}");
-                if (result)
-                {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"Result: {Function.ConvertToBinary(result)}");
-                    Console.ForegroundColor = ConsoleColor.White;
+                    //add current gate to graph elements
+                    Graph.AddToTLine(result);
+                    Graph.AddToBLine(result);
+
                 }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Result: {Function.ConvertToBinary(result)}");
-                    Console.ForegroundColor = ConsoleColor.White;
-                }
+                var stringBinary = String.Concat(outputBinary.ToArray());
+                Console.WriteLine("Inputs: " + stringBinary);
+                Graph.AddToInputFile(stringBinary);
             }
-            
+            //print graph based on those inputs and evaluations
+            Console.WriteLine("\nEach input is represented by one dash. Here is the graph.\n");
+            Graph.PrintGraph();
+            Console.WriteLine("\nPress any key to exit.");
             Console.ReadKey(true);
         }
+
     }
+
 }
+

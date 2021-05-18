@@ -14,7 +14,7 @@ namespace SimpleCircuits
         static string INPUT_LIST = "InputList.txt"; 
 
         private static string Spaces() => " ";
-        private static string Lines() => "|";
+        private static string Lines() => "-";
 
         public static void Initialize()
         {
@@ -66,7 +66,7 @@ namespace SimpleCircuits
             sw.Close();
             fs.Close();
         }
-        public static string GetTopLineString()
+        private static string GetTopLineString()
         {
 
             var fs = new FileStream(TOP_LINE, FileMode.Open);
@@ -79,7 +79,7 @@ namespace SimpleCircuits
 
             return contents;
         }
-        public static string GetBottomLineString()
+        private static string GetBottomLineString()
         {
 
             var fs = new FileStream(BOTTOM_LINE, FileMode.Open);
@@ -91,19 +91,6 @@ namespace SimpleCircuits
             sr.Close();
 
             return contents;
-        }
-        private static int GetLineLength()
-        {
-
-            var fs = new FileStream(TOP_LINE, FileMode.Open);
-            var sr = new StreamReader(fs);
-
-            string contents = sr.ReadToEnd();
-
-            fs.Close();
-            sr.Close();
-
-            return contents.Length;
         }
         private static string GetInputListString()
         {
@@ -120,18 +107,20 @@ namespace SimpleCircuits
         }
         public static void PrintGraph()
         {
-            int lineLength = GetLineLength();
+            //string topLine = File.ReadAllText(TOP_LINE);
+            //string bottomLine = File.ReadAllText(BOTTOM_LINE);
+            //string inputList = File.ReadAllText(INPUT_LIST);
 
-            string topLineContents = GetTopLineString();
-            string bottomLineContents = GetBottomLineString();
-
-            Console.WriteLine("     0    1");
-            Console.WriteLine("------------------");
-
-            for (int i = 0; i < lineLength; i++)
-            {
-                Console.WriteLine($"|    {bottomLineContents[i]}    {topLineContents[i]}");
-            }
+            Console.WriteLine(" |");
+            Console.WriteLine("1|" + GetTopLineString());
+            Console.WriteLine(" |");
+            Console.WriteLine(" |");
+            Console.WriteLine(" |");
+            Console.WriteLine("0|" + GetBottomLineString());
+            Console.WriteLine(" |");
+            Console.WriteLine(" |");
+            Console.WriteLine(" -----------------------------------------------------------");
+            Console.WriteLine(GetInputListString());
         }
     }
 }

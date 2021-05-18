@@ -8,36 +8,63 @@ namespace SimpleCircuits
 {
     class LogicGate
     {
-        public bool Input1 { get; set; }
-        public bool Input2 { get; set; }
-        public bool Input3 { get; set; }
-        public bool Input4 { get; set; }
-        public bool Input5 { get; set; }
-        public bool Input6 { get; set; }
-        public bool Input7 { get; set; }
-        public bool Input8 { get; set; }
-        public bool Input9 { get; set; }
-        public bool Input10 { get; set; }
+       
+
+        private List<bool> Inputs = new List<bool>();
+        public LogicGate(int numberOfInputs) // coinstructor
+        {
+            for (int i = 0; i < numberOfInputs; i++)
+            {
+                Inputs.Add(false);
+            }
+        }
 
         //will eval a 10:1 mux you can find here: https://www.circuitlab.com/circuit/863gf39qs9hn/circuit-documentation/
-        public bool TenVar()
+        public List<bool> NumberOfInputs
         {
-            //something
-            bool AND1 = Input1 && Input2;
-            bool OR2 = Input3 | Input4;
-            bool AND2 = Input5 && Input6;
-            bool OR3 = Input7 | Input8;
-            bool AND3 = Input9 && Input10;
+            get
+            {
+                return Inputs;
+            }
+        }
 
-            bool NOT1 = !AND1;
-            bool OR1 = NOT1 | OR2;
-            bool AND4 = OR3 && AND2;
+        public bool ProcessAsAndGate()
+        {
+            bool result = false;
+            bool init = false;
+            
+            foreach(var input in Inputs)
+            {
+                if (init == false)
+                {
+                    result = input;
+                    continue;
+                }
+                else
+                {
+                    result = result && input;
+                }
+            }
+            return result;
+        }
+        public bool ProcessAsOrGate()
+        {
+            bool result = false;
+            bool init = false;
 
-            bool OR4 = AND4 | OR1;
-
-            bool AND5 = OR4 && AND3;
-
-            return AND5; 
+            foreach (var input in Inputs)
+            {
+                if (init == false)
+                {
+                    result = input;
+                    continue;
+                }
+                else
+                {
+                    result = result | input;
+                }
+            }
+            return result;
         }
     }
 }

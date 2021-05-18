@@ -29,7 +29,7 @@ namespace SimpleCircuits
             return false;
         }
         // converts inputs file created in Generate() to a List of Logic Gates
-        public static List<LogicGate> ConvertToLogicList( int numberOfInputs)
+        public static List<LogicGate> ConvertToLogicList()
         {
             var inputList = new List<LogicGate>();
             var fs = new FileStream(INPUTS, FileMode.Open);
@@ -38,14 +38,22 @@ namespace SimpleCircuits
             string data = String.Empty;
             while ((data = sr.ReadLine()) != null)
             {
-                var dataSplit = data.Split(',').ToList<string>();
-                var gate = new LogicGate(numberOfInputs);
-                for (int i = 0;i <gate.NumberOfInputs.Count; i++)
-                {
-                    gate.NumberOfInputs[i] = Function.ConvertToBool(dataSplit[i]);
-                }
-               
-                inputList.Add(gate);
+                var input = new LogicGate();
+
+                var dataSplit = data.Split(',');
+
+                input.Input1 = Function.ConvertToBool(dataSplit[0]);
+                input.Input2 = Function.ConvertToBool(dataSplit[1]);
+                input.Input3 = Function.ConvertToBool(dataSplit[2]);
+                input.Input4 = Function.ConvertToBool(dataSplit[3]);
+                input.Input5 = Function.ConvertToBool(dataSplit[4]);
+                input.Input6 = Function.ConvertToBool(dataSplit[5]);
+                input.Input7 = Function.ConvertToBool(dataSplit[6]);
+                input.Input8 = Function.ConvertToBool(dataSplit[7]);
+                input.Input9 = Function.ConvertToBool(dataSplit[8]);
+                input.Input10 = Function.ConvertToBool(dataSplit[9]);
+
+                inputList.Add(input);
             } 
             return inputList;
         }
@@ -91,7 +99,7 @@ namespace SimpleCircuits
                     validInputs++;
                 }
             }
-            Console.WriteLine("Generation Complete!\n");
+            Console.WriteLine("Generation Complete!");
         }
     }
 }
