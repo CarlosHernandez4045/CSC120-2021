@@ -52,7 +52,7 @@ namespace SimpleCircuits
         //gemerates all possible combinations of x binary inputs based on parameter given
         public static void Generate(int inputCount)
         {
-            Console.WriteLine("Generating All Possible Inputs....");
+            Console.WriteLine($"Generating All Possible Inputs Based On {inputCount} Inputs....");
             WipeInputFile();
             var rand = new Random();
 
